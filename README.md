@@ -20,7 +20,6 @@ This contract should be deployed by manufacturer.
 
 > To take resposibily of supplying raw material, storing, shipping, packing and selling the product one must register himself. Lets know the functions for this purpose.
 
-
 `registerAsSupplier(uint256 _materialId)` : This function is for registering as supplier. In this contract if someone wants to supply raw material for any product he/she needs to register as a supplier. Here anybody can be a supplier even manufacturer can be a supplier but he also needs to register.
 
 `registerAsStoreKeeper(uint256 _materialId)`: Every material need to store somewhere. This function is for those who want to store that particular material. He needs to register himself as storekeeper of that the material.
@@ -33,4 +32,29 @@ This contract should be deployed by manufacturer.
 
 `supplyRawMaterials(uint256 _materialId, uint256 _amount)` : After registering a supplier need to provide information what material he want to supply and how much amount he want to supply. It has multiple security checks.
 
-`store(uint256 _materialId)` : The storekeeper
+`store(uint256 _materialId)` : The storekeeper needs to call this function with the id of a material which he wants to store.
+
+`packing(uint256 _productId)`: The packer needs to call this function with the id of a product which he wants to pack.
+
+`ship(uint256 _productId)` : The shipper needs to call this function with the id of a product which he wants to ship.
+
+`Sell(uint256 _productId)`: The seller needs to call this function with the id of a product which he wants to sell.
+
+`getProductMetadata(uint256 _productId)` : This is most important function for consumers. A consumer can fetch the address of seller, packer, manufacturer, shipper, supplier and storekeeper's as a figure of metadata.
+
+### Let's know the events:
+
+1. `RawMaterialSupplied`: This event is emitted when a supplier supplies raw materials. It provides information about the amount of material supplied, the material ID, and the address of the supplier.
+2. `ProductAdded`: This event is emitted when a new product is listed by the manufacturer. It includes the name of the product and its unique product ID.
+3. `RawMaterialAdded`: This event is emitted when a new raw material is listed by the manufacturer. It provides information about the name of the material, the amount of material, and its unique material ID.
+4. `StoredBy`: This event is emitted when a storekeeper marks that they have stored a specific material. It includes the address of the storekeeper and the material ID.
+5. `PackerAdded`: This event is emitted when a packer is assigned to a specific product. It includes the address of the packer and the product ID.
+6. `ShipperForProduct`: This event is emitted when a shipper is assigned to a specific product for shipping. It includes the address of the shipper and the product ID.
+7. `ProductReceivedBySeller`: This event is emitted when a seller marks that they have received a specific product. It includes the address of the seller and the product ID.
+8. `SupplierRegistered`: This event is emitted when an address registers as a supplier for a specific product. It includes the address of the supplier and the product ID.
+9. `StorekeeperRegistered`: This event is emitted when an address registers as a storekeeper for a specific product. It includes the address of the storekeeper and the product ID.
+10. `PackerRegistered`: This event is emitted when an address registers as a packer for a specific product. It includes the address of the packer and the product ID.
+11. `ShipperRegistered`: This event is emitted when an address registers as a shipper for a specific product. It includes the address of the shipper and the product ID.
+12. `SellerRegistered`: This event is emitted when an address registers as a seller for a specific product. It includes the address of the seller and the product ID.
+
+These events serve as notifications or logs for different actions and state changes within the supply chain management contract.
